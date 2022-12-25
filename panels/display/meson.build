@@ -43,11 +43,15 @@ sources += gnome.compile_resources(
 )
 
 deps = common_deps + [
-  colord_dep,
   gnome_desktop_dep,
   m_dep,
   upower_glib_dep
 ]
+
+if with_colord == true
+  deps += colord_dep
+endif
+
 
 cflags += [
   '-DDATADIR="@0@"'.format(control_center_datadir)

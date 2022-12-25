@@ -22,7 +22,9 @@
 #include "config.h"
 
 #include <string.h>
+#ifdef WITH_UDEV
 #include <gudev/gudev.h>
+#endif
 
 #include "gsd-device-manager.h"
 #include "gsd-common-enums.h"
@@ -52,7 +54,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (GsdDevice, gsd_device, G_TYPE_OBJECT)
 
 typedef struct
 {
-        GObject parent_instance;
+	GObject parent_instance;
 	GHashTable *devices;
 	GUdevClient *udev_client;
 } GsdDeviceManagerPrivate;

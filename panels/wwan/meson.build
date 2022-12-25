@@ -1,5 +1,9 @@
+deps = common_deps +  [gcr_dep, polkit_gobject_dep]
+with_network_manager = get_option('with-network-manager')
+if with_network_manager == true
+  deps += network_manager_deps
+endif
 
-deps = common_deps + network_manager_deps + [gcr_dep, polkit_gobject_dep]
 panels_list += cappletname
 desktop = 'budgie-@0@-panel.desktop'.format(cappletname)
 

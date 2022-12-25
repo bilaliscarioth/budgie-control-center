@@ -97,7 +97,10 @@ gsd_sources = [
 
 sources = common_sources + files(gsd_sources)
 
-deps = common_deps + [ gudev_dep ]
+deps = common_deps
+if with_udev == true
+  dev += + [ gudev_dep ]
+endif
 
 libdevice = static_library(
   'device',

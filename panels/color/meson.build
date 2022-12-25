@@ -39,11 +39,13 @@ sources += gnome.compile_resources(
 )
 
 deps = common_deps + [
-  colord_dep,
   gnome_desktop_dep,
   m_dep,
-  dependency('colord-gtk', version: '>= 0.1.24'),
 ]
+
+if with_colord == true
+  deps += [colord_dep, dependency('colord-gtk', version: '>= 0.1.24')]
+endif
 
 panels_libs += static_library(
   cappletname,

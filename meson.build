@@ -5,6 +5,8 @@ project(
   meson_version : '>= 0.53.0'
 )
 
+with_colord = get_option('with-colord')
+with_udev = get_option('with-udev')
 control_center_prefix = get_option('prefix')
 control_center_bindir = join_paths(control_center_prefix, get_option('bindir'))
 control_center_datadir = join_paths(control_center_prefix, get_option('datadir'))
@@ -116,7 +118,9 @@ goa_req_version = '>= 3.25.3'
 pulse_req_version = '>= 2.0'
 
 accounts_dep = dependency('accountsservice', version: '>= 0.6.39')
+if with_colord == true
 colord_dep = dependency('colord', version: '>= 0.1.34')
+endif
 gdk_pixbuf_dep = dependency('gdk-pixbuf-2.0', version: '>= 2.23.0')
 gio_dep = dependency('gio-2.0')
 glib_dep = dependency('glib-2.0', version: '>= 2.70.0')
@@ -128,7 +132,10 @@ libxml_dep = dependency('libxml-2.0')
 pulse_dep = dependency('libpulse', version: pulse_req_version)
 pulse_mainloop_dep = dependency('libpulse-mainloop-glib', version: pulse_req_version)
 upower_glib_dep = dependency('upower-glib', version: '>= 0.99.8')
+if with_udev == true
+add_project_arguments('-DWITH_UDEV', language: 'c')
 gudev_dep = dependency('gudev-1.0', version: '>= 232')
+endif
 x11_dep = dependency('x11')
 xi_dep = dependency('xi', version: '>= 1.2')
 epoxy_dep = dependency('epoxy')

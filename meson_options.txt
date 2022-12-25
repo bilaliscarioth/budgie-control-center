@@ -1,4 +1,7 @@
 option('cheese', type: 'boolean', value: true, description: 'build with cheese webcam support')
+option('with-colord', type: 'boolean', value: true, description: 'build with colord support')
+option('with-udev', type: 'boolean', value: true, description: 'build with udev support')
+option('with-network-manager', type: 'boolean', value: true, description: 'build with network manager support')
 option('documentation', type: 'boolean', value: false, description: 'build documentation')
 option('ibus', type: 'boolean', value: true, description: 'build with IBus support')
 option('privileged_group', type: 'string', value: 'wheel', description: 'name of group that has elevated permissions')
